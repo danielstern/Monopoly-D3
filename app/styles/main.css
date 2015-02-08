@@ -2,6 +2,9 @@
   font: 8px sans-serif;
 }
 
+html, svg, text {
+  font-family: Roboto;
+}
 .axis path,
 .axis line {
   fill: none;
@@ -24,4 +27,13 @@
   border: 0px;
   border-radius: 8px;
   pointer-events: none;
+}
+
+.tip {
+  opacity: 0;
+  transition: 0.2s opacity;
+}
+
+.tip:hover {
+  opacity: 1;
 }

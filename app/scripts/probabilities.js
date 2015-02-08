@@ -38,22 +38,14 @@
     })]);
     //debugger;
 
-    svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+    //svg.append("g")
+    //  .attr("class", "x axis")
+    //  .attr("transform", "translate(0," + height + ")")
+    //  .call(xAxis);
 
-    svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("averageProbability");
 
-    svg.selectAll(".bar")
+
+    var bar = svg.selectAll(".bar")
       .data(data)
       .enter().append("rect")
       .attr("class", "bar")
@@ -73,6 +65,41 @@
       .attr("height", function (d) {
         return height - y(d.averageProbability);
       });
+    //
+    var tips = svg.selectAll("g")
+      .data(data)
+      .enter()
+      .append("text:g")
+      .attr('transform',function(d){
+        return'translate('+(x(d.name) + 15) +','+(height - 5)+')'
+      })
+      .attr('class','tip')
+
+    tips
+      .append('g:text')
+      .attr('fill', function (d) {
+        if (d.group === 'Purple' || d.group === 'darkblue' || d.group === 'Special') {
+          return '#ddd'
+        }
+        return '#111';
+      })
+      .text(function(d){return d.name})
+      //.text(function(d){return d.name + " - " + d3.format('')(d.averageProbability,3)})
+      .attr('transform','rotate(-90)')
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("averageProbability");
+    //
+    //bar
+    //  .append('text')
+    //  .text('hi')
 
   });
 
