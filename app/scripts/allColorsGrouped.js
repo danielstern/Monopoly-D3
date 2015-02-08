@@ -43,65 +43,68 @@ d3.json("monopoly.json", function(error, res) {
 
     return true;
   });
-  debugger;
-  var ageNames =['a','b','c'];
+  //debugger;
+  var houseCountNames =['1','2','3','4','hotel'];
 
-  //data.forEach(function(d) {
-  //  d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
-  //});
+  data.forEach(function(d) {
+    d.houseCountPrices = houseCountNames.map(function(name) { return {name: name, value: +d[name]}; });
+  });
 
   x0.domain(data.map(function(d) { return d.group; }));
-  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
-  y.domain([0, d3.max(data, function(d) { return d3.max(d.totalcost, function(d) { return d.totalcost; }); })]);
+  x1.domain(houseCountNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, d3.max(data, function(d) { return d3.max(data,function(d) { return d.totalcost; }); })]);
 
-  svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-  svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Population");
+  //svg.append("g")
+  //  .attr("class", "x axis")
+  //  .attr("transform", "translate(0," + height + ")")
+  //  .call(xAxis);
+  //
+  //svg.append("g")
+  //  .attr("class", "y axis")
+  //  .call(yAxis)
+  //  .append("text")
+  //  .attr("transform", "rotate(-90)")
+  //  .attr("y", 6)
+  //  .attr("dy", ".71em")
+  //  .style("text-anchor", "end")
+  //  .text("Population");
 
   var state = svg.selectAll(".state")
     .data(data)
     .enter().append("g")
     .attr("class", "g")
-    .attr("transform", function(d) { return "translate(" + x0(d.group) + ",0)"; });
+    //.attr("transform", function(d) { return "translate(" + x0(d.group) + ",0)"; });
 
   state.selectAll("rect")
-    .data(function(d) { return d.ages; })
+    //.data(function(d) { return d.totalCost; })
+    .data(data)
     .enter().append("rect")
     .attr("width", x1.rangeBand())
-    .attr("x", function(d) { return x1(d.name); })
-    .attr("y", function(d) { return y(d.value); })
-    .attr("height", function(d) { return height - y(d.value); })
+    .attr("x", function(d) { return x1(d.group); })
+    .attr("y", function(d) {
+      //debugger;
+      return y(d.totalcost); })
+    .attr("height", function(d) { return height - y(d.totalcost); })
     .style("fill", function(d) { return color(d.name); });
 
-  var legend = svg.selectAll(".legend")
-    .data(ageNames.slice().reverse())
-    .enter().append("g")
-    .attr("class", "legend")
-    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  legend.append("rect")
-    .attr("x", width - 18)
-    .attr("width", 18)
-    .attr("height", 18)
-    .style("fill", color);
-
-  legend.append("text")
-    .attr("x", width - 24)
-    .attr("y", 9)
-    .attr("dy", ".35em")
-    .style("text-anchor", "end")
-    .text(function(d) { return d; });
+  //var legend = svg.selectAll(".legend")
+  //  .data(houseCountNames.slice().reverse())
+  //  .enter().append("g")
+  //  .attr("class", "legend")
+  //  .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+  //
+  //legend.append("rect")
+  //  .attr("x", width - 18)
+  //  .attr("width", 18)
+  //  .attr("height", 18)
+  //  .style("fill", color);
+  //
+  //legend.append("text")
+  //  .attr("x", width - 24)
+  //  .attr("y", 9)
+  //  .attr("dy", ".35em")
+  //  .style("text-anchor", "end")
+  //  .text(function(d) { return d; });
 
 });
 })();
