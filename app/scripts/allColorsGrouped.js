@@ -96,7 +96,7 @@ function reg(a){
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Cost to Build Up");
+      .text("Cost to Purchase and Build Up");
 
     var group = svg.selectAll(".group")
       .data(data)
@@ -113,11 +113,16 @@ function reg(a){
       .attr("height", function(d) { return height - y(d.value); })
       .style("fill", function(d,i) { return d3.hsl(d.group).brighter(i/10); });
 
-    var legend = svg.selectAll(".legend")
-      .data(ageNames.slice().reverse())
-      .enter().append("g")
+    var legend = svg
+      .append("g")
       .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
+      .append('text')
+      .text('Left to Right: 1 House, 2 Houses, 3 Houses, 4 Houses, A Hotel')
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .style("text-anchor", "end")
+      .attr("dy", ".35em")
 
     //legend.append("rect")
     //  .attr("x", width - 18)
@@ -129,7 +134,7 @@ function reg(a){
     //  .attr("x", width - 24)
     //  .attr("y", 9)
     //  .attr("dy", ".35em")
-    //  .style("text-anchor", "end")
+    //
     //  .text(function(d,i) { return i + " " + d; });
 
   });
