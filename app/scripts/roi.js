@@ -1,3 +1,7 @@
+function getRoi(d) {
+
+}
+
 (function() {
   var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
@@ -33,7 +37,7 @@
       if (d.group === 'Railroad' || d.group === 'Utilities') {
         return false;
       }
-      d.roi =  d.multpliedrent[0] / (d.price + d.housecost);
+      d.roi =  d.multpliedrent[0] / (d.price + d.housecost) * (( d.averageProbability / 2.5));
       return true;
     });
 

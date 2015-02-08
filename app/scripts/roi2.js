@@ -33,7 +33,7 @@
       if (d.group === 'Railroad' || d.group === 'Utilities') {
         return false;
       }
-      d.roi =  d.multpliedrent[2] / (d.price + d.housecost);
+      d.roi =  d.multpliedrent[2] / (d.price + d.housecost)  * (( d.averageProbability / 2.5));
       return true;
     });
 

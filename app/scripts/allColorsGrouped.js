@@ -23,7 +23,7 @@
     .orient("left")
     .ticks(10,'$');
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("#whole").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -42,7 +42,6 @@
         //console.log(data.group, b.group);
         return data.group === b.group;
       })[0];
-      console.log("Same?",same);
       if (same) {
         same.price+= b.price;
         same.housecost+= b.housecost;
