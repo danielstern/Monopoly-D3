@@ -16,6 +16,74 @@
     <!-- endbuild -->
   </head>
   <body>
+  <h2>
+    Monopoly Prices By Color
+  </h2>
+    <div id="main"></div>
+  <ul>
+    <li>
+      The biggest jump is between dark purple and teal, and blue
+    </li>
+    <li>
+      Utilities and railroads find themselves somewhere beneath the cost curve.
+    </li>
+    <li>
+      Every color but purple has different prices within it.
+    </li>
+  </ul>
+
+  <h2>
+    Rate of Return with one house
+  </h2>
+  <div id="roi"></div>
+  <ul>
+    <li>
+      Even considering their advanced house prices, the higher end has a better rate of return for just one
+    </li>
+    <li>
+      The rate of return for one house on Mediterranean Avenue is really bad
+    </li>
+    <li>
+      Other than at the ends, all is more or less the same
+    </li>
+  </ul>
+
+  <h2>
+    Rate of Return with Three Houses
+  </h2>
+  <div id="roi2"></div>
+  <ul>
+    <li>
+      Interestingly, both the Green colors underperform in this category.
+    </li>
+    <li>
+      Boardwalk has 3x more ROI with three houses than Mediterranean
+    </li>
+  </ul>
+
+
+  <h2>
+    Rate of Return with a Hotel
+  </h2>
+  <div id="roi3"></div>
+  <ul>
+    <li>
+      Strangely, the curve is much different than with 3 houses
+    </li>
+    <li>
+      Rate of returns are good on the cheaper half of the board, and bad on the expensive half, when you have a hotel.
+    </li>
+    <li>
+      As always, Mediterranean Avenue is a weak performer
+    </li>
+  </ul>
+
+  <h2>
+    Cost to Develop Whole Colors
+  </h2>
+  <div id="whole"></div>
+
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -36,6 +104,10 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
+        <script src="scripts/roi.js"></script>
+        <script src="scripts/roi2.js"></script>
+        <script src="scripts/roi3.js"></script>
+        <script src="scripts/allColorsGrouped.js"></script>
         <!-- endbuild -->
 </body>
 </html>

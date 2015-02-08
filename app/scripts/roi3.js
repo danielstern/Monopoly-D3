@@ -16,28 +16,29 @@
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(10, "$");
+    .ticks(10, "%");
 
-  var svg = d3.select("#main").append("svg")
+  var svg = d3.select("#roi3").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.json("monopoly.json", function (error, res) {
+  d3.json("monopoly.json", function(error, res) {
 
-    //debugger;
-    var data = res.properties.filter(function (d) {
-      if (d.group !== 'Special') {
-        return d;
+    var data = res.properties.filter(function(d){
+      if (d.group === 'Special') {
+        return false;
       }
+      if (d.group === 'Railroad' || d.group === 'Utilities') {
+        return false;
+      }
+      d.roi =  d.multpliedrent[4] / (d.price + d.housecost);
+      return true;
     });
-    x.domain(data.map(function (d) {
-      return d.name;
-    }));
-    y.domain([0, d3.max(data, function (d) {
-      return d.price;
-    })]);
+
+    x.domain(data.map(function(d) { return d.name; }));
+    y.domain([0, d3.max(data, function(d) { return d.roi; })]);
 
     svg.append("g")
       .attr("class", "x axis")
@@ -52,32 +53,24 @@
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Price");
+      .text("ROI");
 
     svg.selectAll(".bar")
       .data(data)
       .enter().append("rect")
       .attr("class", "bar")
-      .attr('fill', function (d) {
+      .attr('fill',function(d){
         if (d.group === 'Utilities') return 'lightgray';
         if (d.group === 'Railroad') return 'darkgray';
-        return d.group
-      })
-      .attr("x", function (d) {
-        return x(d.name);
-      })
+        return d.group})
+      .attr("x", function(d) { return x(d.name); })
       .attr("width", x.rangeBand())
-      .attr("y", function (d) {
-        return y(d.price);
-      })
-      .attr("height", function (d) {
-        return height - y(d.price);
-      });
-
+      .attr("y", function(d) { return y(d.roi); })
+      .attr("height", function(d) { return height - y(d.roi); });
   });
 
   function type(d) {
-    d.price = +d.price;
+    d.roi = +d.roi;
     return d;
   }
 })();

@@ -31,7 +31,7 @@
 		"rent": 6,
 		"multpliedrent":[30, 90, 270, 400, 550],
 		"housecost":50,
-		"group": "Light-Green",
+		"group": "lightgreen",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -43,7 +43,7 @@
 		"rent": 6,
 		"multpliedrent":[30, 90, 270, 400, 550],
 		"housecost":50,
-		"group": "Light-Green",
+		"group": "lightgreen",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -55,7 +55,7 @@
 		"rent": 8,
 		"multpliedrent":[40, 100, 300, 450, 600],
 		"housecost":50,
-		"group": "Light-Green",
+		"group": "lightgreen",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -211,7 +211,7 @@
 		"rent": 26,
 		"multpliedrent":[130, 390, 900, 1100, 1275],
 		"housecost":200,
-		"group": "Dark-Green",
+		"group": "darkgreen",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -223,7 +223,7 @@
 		"rent": 26,
 		"multpliedrent":[130, 390, 900, 1100, 1275],
 		"housecost":200,
-		"group": "Dark-Green",
+		"group": "darkgreen",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -235,7 +235,7 @@
 		"rent": 28,
 		"multpliedrent":[150, 450, 1000, 1200, 1400],
 		"housecost":200,
-		"group": "Dark-Green",
+		"group": "darkgreen",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -247,7 +247,7 @@
 		"rent": 35,
 		"multpliedrent":[175, 500, 1100, 1300, 1500],
 		"housecost":200,
-		"group": "Dark-Blue",
+		"group": "darkblue",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
@@ -259,7 +259,7 @@
 		"rent": 50,
 		"multpliedrent":[200, 600, 1400, 1700, 2000],
 		"housecost":200,
-		"group": "Dark-Blue",
+		"group": "darkblue",
 		"ownedby":-1,
 		"buildings":0,
 		"mortgaged":false
